@@ -1,6 +1,6 @@
 pipeline {
   
-  agent none
+ /* agent none */
   
   stages {
     
@@ -11,14 +11,18 @@ pipeline {
       }*/
   
      stage('Test unitaire & publication') {
-    
+      agent {
+        label 'agent_java'
+        
        steps {
          sh 'mvn test'
           }
         }
 
       stage('Compilation') {
-    
+        agent {
+        label 'agent_java'
+          
         steps {  
            sh 'mvn -B -DskipTests clean package'
           }
