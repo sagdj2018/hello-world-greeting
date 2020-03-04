@@ -4,16 +4,18 @@ pipeline {
   
   stages {
     
-    /*stage('Compilation et tests') {
+    stage('Compilation et tests') {
 
       agent {
         label 'agent_java'
-      }*/
+      }
   
      stage('Test unitaire & publication') {
       agent {
         label 'agent_java'
-        
+      }
+       
+       
        steps {
          sh 'mvn test'
           }
@@ -22,7 +24,8 @@ pipeline {
       stage('Compilation') {
         agent {
         label 'agent_java'
-          
+        }
+        
         steps {  
            sh 'mvn -B -DskipTests clean package'
           }
